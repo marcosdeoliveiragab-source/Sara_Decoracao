@@ -202,7 +202,7 @@ img {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background: url('imagens/fundo_site.jpg') center 25% / cover no-repeat;
+    background: url('imagens/fundo_site.jpg') center 20% / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -332,64 +332,143 @@ img {
 }
 
 /* ==========================================================================
-   SERVIÇOS
+   SERVIÇOS (VITRINE EM BLOCOS BRANCOS)
    ========================================================================== */
 .services {
     background-color: var(--bg-light);
 }
 
-.services-grid {
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* Bloco Branco Estilo Card Grande */
+.service-block {
+    background-color: var(--bg-white);
+    border-radius: 16px;
+    padding: 35px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 60px;
-}
-
-.service-card {
-    background: var(--bg-white);
-    padding: 40px 30px;
-    border-radius: 4px;
-    text-align: center;
-    box-shadow: var(--shadow);
+    grid-template-columns: 1fr 1.25fr; /* Mantém a proporção exata da foto de referência */
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(179, 148, 90, 0.12);
     transition: var(--transition);
-    border: 1px solid rgba(179, 148, 90, 0.15);
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
+.service-block:hover {
+    box-shadow: 0 15px 35px rgba(179, 148, 90, 0.18);
+    transform: translateY(-3px);
 }
 
-.service-icon {
-    width: 70px;
-    height: 70px;
-    background-color: var(--bg-light);
-    color: var(--primary-dark);
-    border-radius: 50%;
+/* Inverte a ordem da foto nos blocos pares para dar ritmo ao layout */
+.service-block.reverse {
+    grid-template-columns: 1.25fr 1fr;
+}
+
+.service-block.reverse .service-block-img {
+    order: 2;
+}
+
+.service-block.reverse .service-block-content {
+    order: 1;
+}
+
+/* Container da Imagem Vertical */
+.service-block-img {
+    width: 100%;
+    height: 480px; /* Altura ideal para valorizar a foto vertical */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.service-block-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+}
+
+.service-block:hover .service-block-img img {
+    transform: scale(1.03);
+}
+
+/* Conteúdo de Texto */
+.service-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.service-block-content h3 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+.service-block-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.service-features {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.service-features li {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin: 0 auto 20px auto;
-    transition: var(--transition);
-}
-
-.service-card:hover .service-icon {
-    background-color: var(--primary);
-    color: var(--bg-white);
-}
-
-.service-card h3 {
-    font-family: var(--font-title);
-    font-size: 1.35rem;
+    gap: 10px;
     font-weight: 400;
-    margin-bottom: 15px;
-    color: var(--text-dark);
 }
 
-.service-card p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+.service-features i {
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+/* Ajuste Responsivo para Dispositivos Móveis */
+@media (max-width: 992px) {
+    .service-block,
+    .service-block.reverse {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 25px;
+    }
+
+    .service-block.reverse .service-block-img {
+        order: 1;
+    }
+
+    .service-block.reverse .service-block-content {
+        order: 2;
+    }
+
+    .service-block-img {
+        height: 350px;
+    }
+
+    .service-block-content h3 {
+        font-size: 1.6rem;
+    }
 }
 
 /* ==========================================================================
