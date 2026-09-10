@@ -380,7 +380,8 @@ img {
 /* Container da Imagem Vertical */
 .service-block-img {
     width: 100%;
-    height: 480px; /* Altura ideal para valorizar a foto vertical */
+    height: auto;
+    aspect-ratio: 4 / 5; /* Trava a moldura na proporção exata de 1080x1350 */
     border-radius: 10px;
     overflow: hidden;
 }
