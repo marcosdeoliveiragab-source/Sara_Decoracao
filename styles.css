@@ -202,7 +202,7 @@ img {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background: url('imagens/fundos.jpg') center 25% / cover no-repeat;
+    background: url('imagens/fundo.jpg') center 25% / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
